@@ -44,9 +44,7 @@ namespace StarChart.Controllers
         [HttpGet()]
         public IActionResult GetAll()
         {
-            var models = _context.CelestialObjects;
-            if (!models.Any())
-                return NotFound();
+            var models = _context.CelestialObjects.ToList();
             foreach (var item in models)
             {
                 item.Satellites = _context.CelestialObjects.Where(e => e.OrbitedObject.Id == item.Id).ToList();
