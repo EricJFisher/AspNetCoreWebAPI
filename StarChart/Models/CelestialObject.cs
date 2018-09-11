@@ -11,5 +11,6 @@ namespace StarChart.Models
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+        public CelestialObject OrbitedObject { get; set; }
     }
 }
