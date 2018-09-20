@@ -74,20 +74,20 @@ __Note:__ this isn't the only way to accomplish this, however; this is what the 
 - [ ] Create `CelestialObjectControllers`'s Post, Put, Patch, and Delete actions
   - [ ] Create the `Create` method
     - This method should have a return type of `IActionResult` .
-    - This method should accept a parameter of type `[FromBody]CelestialObject`. 
+    - This method should accept a parameter of type `[FromBody]CelestialObject`. (Note: You will need to add a `using` directive for `StarChart.Models`) 
     - This method should have an `HttpPost` attribute. 
     - This method should add the provided `CelestialObject` to the `CelestialObjects` `DbSet` then `SaveChanges`.
     - This method should return a `CreatedAtRoute` with the arguments 
       - `"GetById"`
       - A new `object` with an `id` of the `CelestialObject`'s `Id` (note: use the `new { }` format)
-      - The newly created `CelestialObject`. (Note: You will need to add a `using` directive for `StarChart.Models`)
+      - The newly created `CelestialObject`.
   - [ ] Create the `Update` method
     - This method should have a return type of `IActionResult` .
     - This method should accept a parameter of type `int` named `id` and a parameter of type `CelestialObject`. 
     - This method should have the `HttpPut` attribute with a value of `"{id}"`.
     - This method should locate the `CelestialObject` with an `Id` that matches the provided `int` parameter. 
       - If no match is found return `NotFound`.
-      - If a match is found set it's `Name`, `OrbitalPeriod`, `OrbitedObjectId`, and `Satellites` properties based on the provided `CelestialObject` parameter. Call `Update` on the `CelestialObjects` `DbSet` with an argument of the updated `CelestialObject`, and then call `SaveChanges`.
+      - If a match is found set it's `Name`, `OrbitalPeriod`, and `OrbitedObjectId` properties based on the provided `CelestialObject` parameter. Call `Update` on the `CelestialObjects` `DbSet` with an argument of the updated `CelestialObject`, and then call `SaveChanges`.
     - This method should return `NoContent`.
   - [ ] Create the `RenameObject` method
     - This method should have a return type of `IActionResult`.
