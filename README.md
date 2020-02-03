@@ -35,9 +35,10 @@ If you would rather use something other than Visual Studio
 __Note:__ this isn't the only way to accomplish this, however; this is what the project's tests are expecting. Implementing this in a different way will likely result in being marked as incomplete / incorrect.
 
 - [ ] Adding Middleware/Configuration to `Startup.cs`
-  - [ ] In the `ConfigureServices` method call the `AddMvc` method on `services` to add support for MVC middleware.
+  - [ ] In the `ConfigureServices` method call the `AddControllers` method on `services` to add support for MVC middleware.
   - [ ] In the `ConfigureServices` method call `AddDbContext<ApplicationDbContext>` on `services` with the argument `options => options.UseInMemoryDatabase("StarChart")` to point `EntityFramework` to the application's `DbContext`. (Note: You will need to add a `using` directives for `StarChart.Data` and `Microsoft.EntityFrameworkCore`)
-  - [ ] In the `Configure` method add a call to `UseMvc` method on `app`.
+  - [ ] In the `Configure` method add a call to `UseRouting` method on `app`.
+  - [ ] In the `Configure` method after the `UseRouting` call, call `UseEndpoints` on `app` with an argument of `endpoints => { endpoints.MapControllers(); }`.
 - [ ] Create `CelestialObject` Model
   - [ ] Create a new public class `CelestialObject` in the `Models` directory
   - [ ] Create a new public property of type `int` named `Id`.
