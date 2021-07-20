@@ -18,6 +18,42 @@ namespace StarChart.Controllers
             this._context = _context;
         }
         
+        [HttpGet ("{id:int}")]
+        public IActionResult GetById(int id)
+        {
+           var satellite= _context.CelestialObjects.Find(id);
+
+            if(satellite!=null)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet("{name}")]
+        public IActionResult GetByName(String name)
+        {
+            var result = _context.CelestialObjects.Where(x => x.Name.Equals(name)).Count();
+
+            if(result>0)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok();
+        }
 
     }
 }
