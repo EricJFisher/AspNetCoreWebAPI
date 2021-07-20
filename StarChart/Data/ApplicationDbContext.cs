@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StarChart.Models;
 
 namespace StarChart.Data
 {
@@ -7,5 +8,7 @@ namespace StarChart.Data
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
+
+        public DbSet<CelestialObject> CelestialObjects { get; set; }
     }
 }
